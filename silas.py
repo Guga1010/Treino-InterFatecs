@@ -1,12 +1,13 @@
-# Spins que abre/fecha quantum gates. Caso o número do quantum gate dividido pelo número do spin tiver resto 0, o quantum gate é aberto.
-# O número de spins é igual ao número de quantum gates.
+# Personagem Silas que tem como objetivo encontrar um chave, havendo obstáculos na frente
+# K(chave),S(Silas),.(caminho livre),#(caminho bloqueado),1...(força do inimigo)
 
 #Entrada: 
-    # n linhas - quantidade de spins.                                       Ex: 2
-    # última linha - deve ser 0 para indicar o fim da entrada de spins.     Ex: 0
+    # 1° linha - força do sylas                                                                               Ex: 10                       
+    # 2º linha - dimensão do cenário                                                                          Ex: 1 5
+    # n linhas - elementos presentes no cenário.                                                              Ex: S . . 5 K
 
 #Saída:
-    # n linhas - indica o número do quantum gates que ficou aberto          Ex: 1
+    # linha - indica o número de passos que levou para chegar na chave, se não conseguir o resultado será 'N'      Ex: 4
 
 arqE = open("./input.txt","r")
 linhasArq = arqE.readlines()
@@ -51,7 +52,6 @@ posXSilas = 0
 posYSilas = 0
 countMoviment = 0
 while(posXSilas != posXKey or posYSilas != posYKey):
-    print(str(posXSilas)+":"+str(posYSilas))
     if(posYSilas < posYKey):
         if(verificarPos(posXSilas,posYSilas+1)):
             posYSilas+=1
@@ -66,7 +66,6 @@ while(posXSilas != posXKey or posYSilas != posYKey):
             break
         while(True):
             posYSilas-=1
-            print(str(posXSilas)+":"+str(posYSilas))
             if(verificarPos(posXSilas+1,posYSilas)):
                 posXSilas+=1
                 break
